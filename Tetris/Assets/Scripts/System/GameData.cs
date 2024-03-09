@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class GameData
+public static class GameData
 {
 	public static readonly float cos = Mathf.Cos(Mathf.PI / 2f);
 	public static readonly float sin = Mathf.Sin(Mathf.PI / 2f);
+
+	// Rotate points in 2D plane CLOCKWISE through a specified angle, in this case is 90 degrees.
 	public static readonly float[] RotationMatrix = new float[] { cos, sin, -sin, cos };
 
-	public static readonly Dictionary<TetrominoShape, Vector2Int[]> Points = new Dictionary<TetrominoShape, Vector2Int[]>()
+	public static readonly Dictionary<TetrominoShape, Vector2Int[]> ShapeCells = new Dictionary<TetrominoShape, Vector2Int[]>()
 	{
 		{ TetrominoShape.I, new Vector2Int[] { new Vector2Int(-1, 1), new Vector2Int( 0, 1), new Vector2Int( 1, 1), new Vector2Int( 2, 1) } },
 		{ TetrominoShape.J, new Vector2Int[] { new Vector2Int(-1, 1), new Vector2Int(-1, 0), new Vector2Int( 0, 0), new Vector2Int( 1, 0) } },

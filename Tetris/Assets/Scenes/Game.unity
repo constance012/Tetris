@@ -310,6 +310,8 @@ GameObject:
   - component: {fileID: 690342913}
   - component: {fileID: 690342912}
   - component: {fileID: 690342911}
+  - component: {fileID: 690342914}
+  - component: {fileID: 690342915}
   m_Layer: 0
   m_Name: Game Board
   m_TagString: Untagged
@@ -332,25 +334,21 @@ MonoBehaviour:
   tetrominoes:
   - shape: 0
     tile: {fileID: 11400000, guid: ed0ecf75762412845aa554a0f1195023, type: 2}
-    points: []
   - shape: 1
     tile: {fileID: 11400000, guid: 5ca034656d149b54bbaef04c228fb124, type: 2}
-    points: []
   - shape: 2
     tile: {fileID: 11400000, guid: f79db1d190149b94e898e9fc5b14a535, type: 2}
-    points: []
   - shape: 3
     tile: {fileID: 11400000, guid: 3d8ac7f278e105446bda7e3e0023a05e, type: 2}
-    points: []
   - shape: 4
     tile: {fileID: 11400000, guid: bec5fc5e2a73d294291885c6b10a8630, type: 2}
-    points: []
   - shape: 5
     tile: {fileID: 11400000, guid: bb174f909624b394ea89fbd5876e187c, type: 2}
-    points: []
   - shape: 6
     tile: {fileID: 11400000, guid: f73da75c4c656f0458aad311f21b7467, type: 2}
-    points: []
+  spawnPosition: {x: 0, y: 8, z: 0}
+  boardSize: {x: 10, y: 20}
+  activePiece: {fileID: 690342914}
 --- !u!156049354 &690342912
 Grid:
   m_ObjectHideFlags: 0
@@ -380,6 +378,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &690342914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690342910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9549b46d812794a4884d0d4ebe667f71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameBoard: {fileID: 690342911}
+  dropDelay: 1
+  lockDelay: 0.3
+  dropWhenRotate: 1
+--- !u!114 &690342915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690342910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1465ea503393ae74f89f1654ef319dec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameBoard: {fileID: 690342911}
+  dropDelay: 0
+  lockDelay: 0
+  dropWhenRotate: 0
+  ghostTile: {fileID: 11400000, guid: 00d561f84b9f1ec429abf85692db73cd, type: 2}
+  trackingPiece: {fileID: 690342914}
 --- !u!1 &1144098984
 GameObject:
   m_ObjectHideFlags: 0

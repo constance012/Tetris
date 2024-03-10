@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityRandom = UnityEngine.Random;
@@ -13,6 +14,9 @@ public class Board : MonoBehaviour
 	[Header("Currently Active Piece"), Space]
 	[SerializeField] private Piece activePiece;
 
+	[Header("UI References"), Space]
+	[SerializeField] private TextMeshProUGUI scoreText;
+
 	// Properties.
 	public Tilemap Tilemap { get; private set; }
 	public RectInt Bounds
@@ -24,15 +28,20 @@ public class Board : MonoBehaviour
 		}
 	}
 
+	// Private fields.
+	private const int LINE_BASE_SCORES = 100;
+	private int _scores = 0;
+
 	private void Awake()
 	{
-		Tilemap = this.GetComponentInChildren<Tilemap>("Tetrominoes");
+		Tilemap = this.GetComponentInChildren<Tilemap>("Tetromino Tilemap");
 		Array.ForEach(tetrominoes, tetromino => tetromino.InitializeCells());
 	}
 
 	private void Start()
 	{
 		SpawnNewPiece();
+		scoreText.text = $"<b>SCORES:</b>\n{_scores}";
 	}
 
 	#region Tetris Piece Management.
@@ -92,13 +101,19 @@ public class Board : MonoBehaviour
 		RectInt bounds = this.Bounds;
 		int row = bounds.yMin;
 
+		int completedRows = 0;
 		while (row < bounds.yMax)
 		{
 			if (IsRowCompleted(row))
+			{
 				ClearRow(row);
+				_scores += LINE_BASE_SCORES * ++completedRows;
+			}
 			else
 				row++;
 		}
+
+		scoreText.text = $"<b>SCORES:</b>\n{_scores}";
 	}
 
 	private bool IsRowCompleted(int row)

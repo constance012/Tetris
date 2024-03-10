@@ -12,7 +12,7 @@ public class GhostPiece : Piece
 
 	private void Awake()
 	{
-		GhostTilemap = this.GetComponentInChildren<Tilemap>("Ghost Overlay");
+		GhostTilemap = gameBoard.GetComponentInChildren<Tilemap>("Ghost Overlay Tilemap");
 		CurrentTetromino = new TetrominoData(TetrominoShape.O, ghostTile);
 		CurrentShapeCells = new Vector3Int[4];
 	}
